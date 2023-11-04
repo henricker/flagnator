@@ -6,7 +6,9 @@ pub enum CreateProjectError {
 impl std::fmt::Display for CreateProjectError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match *self {
-            CreateProjectError::NameExists => write!(f, "A project with the given name already exists."),
+            CreateProjectError::NameExists => {
+                write!(f, "A project with the given name already exists.")
+            }
         }
     }
 }

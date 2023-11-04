@@ -10,13 +10,18 @@ pub struct Schedule {
 }
 
 impl Schedule {
-   // Constructor and other methods for the Project entity
-   pub fn new(id: Uuid, feature_flag_id: Uuid, start: DateTime<Utc>, end: DateTime<Utc>) -> Schedule {
-        Schedule { 
-            id, 
+    // Constructor and other methods for the Project entity
+    pub fn new(
+        id: Uuid,
+        feature_flag_id: Uuid,
+        start: DateTime<Utc>,
+        end: DateTime<Utc>,
+    ) -> Schedule {
+        Schedule {
+            id,
             feature_flag_id,
             start,
-            end, 
+            end,
         }
     }
 }

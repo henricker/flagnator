@@ -1,7 +1,5 @@
-
-mod domain;
 mod business;
-
+mod domain;
 
 fn main() {
     let string1 = String::from("long string is long");
@@ -12,8 +10,7 @@ fn main() {
     println!("{} {}", string1, string2);
 }
 
-
-fn longest<'a>(x: &'a  str, y: &'a  str) -> &'a str {
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
     } else {

@@ -13,13 +13,19 @@ pub struct FeatureFlag {
 
 impl FeatureFlag {
     // Constructor and other methods for the FeatureFlag entity
-    pub fn new(id: Uuid, project_id: Uuid, name: String, is_enabled: bool, schedule: Option<Schedule>) -> FeatureFlag {
-        FeatureFlag { 
-            id, 
-            project_id, 
-            name, 
-            is_enabled, 
-            schedule 
+    pub fn new(
+        id: Uuid,
+        project_id: Uuid,
+        name: String,
+        is_enabled: bool,
+        schedule: Option<Schedule>,
+    ) -> FeatureFlag {
+        FeatureFlag {
+            id,
+            project_id,
+            name,
+            is_enabled,
+            schedule,
         }
     }
 }
