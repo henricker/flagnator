@@ -10,6 +10,12 @@ pub enum DeleteFeatureFlagError {
     FeatureNotBelongsThisProject
 }
 
+#[derive(Debug)]
+pub enum UpdateFeatureFlagError {
+    FeatureNotFound,
+    FeatureNotBelongsThisProject
+}
+
 impl std::fmt::Display for CreateFeatureFlagError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match *self {
@@ -28,6 +34,17 @@ impl std::fmt::Display for DeleteFeatureFlagError {
     }
 }
 
+impl std::fmt::Display for UpdateFeatureFlagError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match *self {
+            UpdateFeatureFlagError::FeatureNotFound => write!(f, "Feature not found"),
+            UpdateFeatureFlagError::FeatureNotBelongsThisProject => write!(f, "Feature not belongs this project")
+        }
+    }
+}
+
 impl std::error::Error for DeleteFeatureFlagError {}
 
 impl std::error::Error for CreateFeatureFlagError {}
+
+impl std::error::Error for UpdateFeatureFlagError {}
