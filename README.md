@@ -1,32 +1,32 @@
 # Flagnator v1
 
-## Introdução
-O Flagnator é uma ferramenta essencial para o gerenciamento de feature flags, permitindo o controle sobre a ativação e desativação de funcionalidades em aplicativos de software. A versão 1 concentra-se em fornecer funcionalidades core para facilitar o lançamento de novos recursos e testes A/B.
+## Introduction
+Flagnator is an essential tool for managing feature flags, providing control over the activation and deactivation of features in software applications. Version 1 focuses on providing core functionalities to facilitate the rollout of new features and A/B testing.
 
-## Funcionalidades
-Na versão inicial, o Flagnator oferece funcionalidades simplificadas, porém poderosas:
+## Features
+In its initial release, Flagnator offers simplified yet powerful features:
 
-### 1. Gerenciamento de Flags
-- **Criação de Flags**: Implemente flags de funcionalidade que podem ser alteradas em tempo real.
-- **Atualização de Flags**: Modifique as configurações das flags para adaptar-se rapidamente às mudanças de requisitos.
-- **Remoção de Flags**: Elimine flags obsoletas para manter sua base de código enxuta e atualizada.
+### 1. Flag Management
+- **Flag Creation**: Implement feature flags that can be toggled in real-time.
+- **Flag Update**: Modify flag settings to quickly adapt to changing requirements.
+- **Flag Removal**: Delete obsolete flags to keep your codebase lean and up-to-date.
 
-### 2. Integração de API
-- **API RESTful**: Integre o Flagnator em sua infraestrutura existente usando nossa API RESTful para um gerenciamento de flags consistente e automatizado.
+### 2. API Integration
+- **RESTful API**: Integrate Flagnator into your existing infrastructure with our RESTful API for consistent and automated flag management.
 
-### 3. Scheduler de Flags
-- **Agendamento de Flags**: Programe a ativação ou desativação automática de flags com base no cronograma estabelecido, garantindo que as alterações aconteçam no momento ideal.
+### 3. Flag Scheduler
+- **Flag Scheduling**: Schedule automatic flag activation or deactivation based on the established timeline, ensuring changes occur at the ideal moment.
 
-## Iniciando com o Flagnator
-Para implementar o Flagnator em seu sistema, siga estes passos:
+## Getting Started with Flagnator
+To implement Flagnator into your system, follow these steps:
 
-1. **Instalação**: Clone o repositório do Flagnator e siga as instruções de configuração.
-2. **Criação e Gestão de Flags**: Use a API RESTful para criar e gerenciar suas flags.
-3. **Scheduler**: Configure o agendamento das flags conforme necessário para alinhar com seus planos de lançamento.
+1. **Installation**: Clone the Flagnator repository and follow the setup instructions.
+2. **Creating and Managing Flags**: Use the RESTful API to create and manage your flags.
+3. **Scheduling**: Configure the scheduling of flags as needed to align with your release plans.
 
-## Contribuições e Suporte
-Encorajamos contribuições para ajudar a melhorar o Flagnator. Se você tiver ideias ou melhorias, sinta-se à vontade para colaborar. Caso precise de suporte ou tenha questões, por favor, utilize os canais de comunicação fornecidos no repositório para obter assistência.
+## Contributions and Support
+We encourage contributions to help improve Flagnator. If you have ideas or enhancements, feel free to collaborate. If you need support or have questions, please use the communication channels provided in the repository for assistance.
 
 ---
 
-Esperamos que o Flagnator torne o gerenciamento de features do seu projeto mais eficiente e confiável. Estamos ansiosos para ver as inovações que você implementará com nossa ferramenta!
+We hope Flagnator makes the feature management of your project more efficient and reliable. We look forward to seeing the innovations you will implement with our tool!
