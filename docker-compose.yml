@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+    db:
+      image: postgres
+      restart: always
+      environment: 
+        POSTGRES_PASSWORD: flagnatorTest123!
+        POSTGRES_USER: flagnatorTest123!User
+        POSTGRES_DB: flagnator
+      ports:
+          - '5432:5432'
