@@ -1,10 +1,11 @@
 use std::error::Error;
 
-use diesel::prelude::Insertable;
 use diesel::{ExpressionMethods, OptionalExtension, QueryDsl, RunQueryDsl, SelectableHelper};
 
 use crate::infrastructure::database::database_connection::DbConnection;
 use crate::infrastructure::database::entities::organization_diesel_entity::OrganizationDiesel;
+use crate::infrastructure::database::mappers::organization_db_mapper::OrganizationDbMapper;
+use crate::shared::mappers::DbMapper;
 use uuid::Uuid;
 
 use crate::infrastructure::database::error::DatabaseError;
@@ -15,27 +16,14 @@ use crate::{
 };
 pub struct OrganizationDieselRepository {
     pub db_conn: DbConnection,
-}
-
-#[derive(Insertable)]
-#[diesel(table_name = crate::infrastructure::database::schema::organizations)]
-struct NewOrganization<'a> {
-    pub id: &'a String,
-    pub name: &'a String,
-    pub password: &'a String,
-    pub email: &'a String,
+    pub organization_db_mapper: OrganizationDbMapper
 }
 
 impl OrganizationRepository for OrganizationDieselRepository {
     fn add(&self, organization: &Organization) -> Result<(), Box<dyn Error>> {
         let conn = &mut self.db_conn.get_database_connection();
 
-        let new_organization = NewOrganization {
-            email: &organization.email,
-            id: &organization.id.to_string(),
-            name: &organization.name,
-            password: &organization.password,
-        };
+        let new_organization = self.organization_db_mapper.to_db(organization);
 
         diesel::insert_into(organizations::table)
             .values(&new_organization)
@@ -63,13 +51,7 @@ impl OrganizationRepository for OrganizationDieselRepository {
 
         let organization = match organization_opt {
             None => return Ok(None),
-            Some(organization_schema) => Organization {
-                email: organization_schema.email,
-                id: Uuid::parse_str(&organization_schema.id.to_string())
-                    .expect("Failed to load uuid"),
-                name: organization_schema.name,
-                password: organization_schema.password,
-            },
+            Some(organization_schema) => self.organization_db_mapper.to_entity(&organization_schema)
         };
 
         Ok(Some(organization))

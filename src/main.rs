@@ -7,7 +7,7 @@ use crate::{
     business::repositories::organization_repository::OrganizationRepository,
     infrastructure::database::{
         database_connection::DbConnection,
-        repositories::organization_diesel::OrganizationDieselRepository,
+        repositories::organization_diesel::OrganizationDieselRepository, mappers::organization_db_mapper::OrganizationDbMapper,
     },
 };
 
@@ -23,13 +23,14 @@ fn main() {
 
     let repository = OrganizationDieselRepository {
         db_conn: db_connection,
+        organization_db_mapper: OrganizationDbMapper {}
     };
 
-    //let _ = repository.add(&Organization::new(Uuid::new_v4(), "featrure-x".to_string(), "email@email.com".to_string(), "passwqord".to_string()));
+    let _ = repository.add(&Organization::new(Uuid::new_v4(), "featrure-y".to_string(), "emai@email.com".to_string(), "passwqord".to_string()));
 
     //let result_opt = repository.get(Uuid::from_str("1f0382aa-a35c-4d6c-8e8e-ca840a713c52").expect("error")).unwrap();
 
-    let result = repository.email_exists("email@email.com").unwrap();
+    //let result = repository.email_exists("email@email.com").unwrap();
 
-    println!("{}", result);
+    //println!("{}", result);
 }

@@ -7,21 +7,21 @@ use crate::shared::mappers::DbMapper;
 pub struct OrganizationDbMapper {}
 
 impl DbMapper<Organization, OrganizationDiesel> for OrganizationDbMapper {
-    fn to_db(entity: Organization) -> OrganizationDiesel {
+    fn to_db(&self, entity: &Organization) -> OrganizationDiesel {
         OrganizationDiesel {
-            email: entity.email,
+            email: entity.email.clone(),
             id: entity.id.to_string(),
-            name: entity.name,
-            password: entity.password,
+            name: entity.name.clone(),
+            password: entity.password.clone(),
         }
     }
 
-    fn to_entity(model: OrganizationDiesel) -> Organization {
+    fn to_entity(&self, model: &OrganizationDiesel) -> Organization {
         Organization {
-            email: model.email,
+            email: model.email.clone(),
             id: Uuid::parse_str(&model.id.to_string()).expect("Failed to load uuid"),
-            name: model.name,
-            password: model.password,
+            name: model.name.clone(),
+            password: model.password.clone(),
         }
     }
 }
