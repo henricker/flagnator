@@ -2,4 +2,4 @@
 # see diesel.rs/guides/configuring-diesel-cli
 
 [print_schema]
-file = "src/infraestructure/database/schema.rs"
+file = "src/infrastructure/database/schema.rs"
