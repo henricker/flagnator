@@ -1,20 +1,27 @@
+use std::str::FromStr;
+
+use domain::entities::organization::Organization;
+use uuid::Uuid;
+
+use crate::{infrastructure::database::{database_connection::DbConnection, repositories::organization_diesel::OrganizationDieselRepository}, business::repositories::organization_repository::OrganizationRepository};
+
 mod business;
 mod domain;
 mod shared;
+mod infrastructure;
 
 fn main() {
-    let string1 = String::from("long string is long");
 
-    let string2 = String::from("xyz");
-    let result = longest(string1.as_str(), string2.as_str());
-    println!("The longest string is {}", result);
-    println!("{} {}", string1, string2);
-}
 
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
+  let db_connection = DbConnection {database_name: "flagnator".to_string() };
+
+  let repository = OrganizationDieselRepository { db_conn: db_connection };
+
+  //let _ = repository.add(&Organization::new(Uuid::new_v4(), "featrure-x".to_string(), "email@email.com".to_string(), "passwqord".to_string()));
+
+  //let result_opt = repository.get(Uuid::from_str("1f0382aa-a35c-4d6c-8e8e-ca840a713c52").expect("error")).unwrap();
+
+  let result = repository.email_exists("email@email.com").unwrap();
+
+  println!("{}", result);
 }
