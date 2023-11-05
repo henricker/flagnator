@@ -1,8 +1,8 @@
 use uuid::Uuid;
 
-use crate::shared::mappers::DbMapper;
 use crate::domain::entities::organization::Organization;
 use crate::infrastructure::database::entities::organization_diesel_entity::OrganizationDiesel;
+use crate::shared::mappers::DbMapper;
 
 pub struct OrganizationDbMapper {}
 
@@ -12,7 +12,7 @@ impl DbMapper<Organization, OrganizationDiesel> for OrganizationDbMapper {
             email: entity.email,
             id: entity.id.to_string(),
             name: entity.name,
-            password: entity.password
+            password: entity.password,
         }
     }
 

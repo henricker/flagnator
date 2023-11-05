@@ -3,25 +3,33 @@ use std::str::FromStr;
 use domain::entities::organization::Organization;
 use uuid::Uuid;
 
-use crate::{infrastructure::database::{database_connection::DbConnection, repositories::organization_diesel::OrganizationDieselRepository}, business::repositories::organization_repository::OrganizationRepository};
+use crate::{
+    business::repositories::organization_repository::OrganizationRepository,
+    infrastructure::database::{
+        database_connection::DbConnection,
+        repositories::organization_diesel::OrganizationDieselRepository,
+    },
+};
 
 mod business;
 mod domain;
-mod shared;
 mod infrastructure;
+mod shared;
 
 fn main() {
+    let db_connection = DbConnection {
+        database_name: "flagnator".to_string(),
+    };
 
+    let repository = OrganizationDieselRepository {
+        db_conn: db_connection,
+    };
 
-  let db_connection = DbConnection {database_name: "flagnator".to_string() };
+    //let _ = repository.add(&Organization::new(Uuid::new_v4(), "featrure-x".to_string(), "email@email.com".to_string(), "passwqord".to_string()));
 
-  let repository = OrganizationDieselRepository { db_conn: db_connection };
+    //let result_opt = repository.get(Uuid::from_str("1f0382aa-a35c-4d6c-8e8e-ca840a713c52").expect("error")).unwrap();
 
-  //let _ = repository.add(&Organization::new(Uuid::new_v4(), "featrure-x".to_string(), "email@email.com".to_string(), "passwqord".to_string()));
+    let result = repository.email_exists("email@email.com").unwrap();
 
-  //let result_opt = repository.get(Uuid::from_str("1f0382aa-a35c-4d6c-8e8e-ca840a713c52").expect("error")).unwrap();
-
-  let result = repository.email_exists("email@email.com").unwrap();
-
-  println!("{}", result);
+    println!("{}", result);
 }
