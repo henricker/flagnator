@@ -1,5 +1,6 @@
 mod business;
 mod domain;
+mod shared;
 
 fn main() {
     let string1 = String::from("long string is long");
