@@ -43,7 +43,7 @@ impl ProjectRepository for ProjectDieselRepository {
             .optional();
 
         let project_opt = match result {
-            Err(_) => return Err(Box::new(DatabaseError::GetOrganizationError)),
+            Err(_) => return Err(Box::new(DatabaseError::GetProjectError)),
             Ok(project_opt) => project_opt,
         };
 
