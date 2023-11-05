@@ -1,6 +1,7 @@
 #[derive(Debug)]
 pub enum DatabaseError {
     GetOrganizationError,
+    GetProjectError,
 }
 
 impl std::fmt::Display for DatabaseError {
@@ -8,6 +9,9 @@ impl std::fmt::Display for DatabaseError {
         match *self {
             DatabaseError::GetOrganizationError => {
                 write!(f, "Problem in database on returning Organization")
+            }
+            DatabaseError::GetProjectError => {
+                write!(f, "Problem in database on returning Project")
             }
         }
     }

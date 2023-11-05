@@ -1,15 +1,14 @@
 use std::str::FromStr;
 
-use domain::entities::organization::Organization;
+use business::repositories::project_repository::ProjectRepository;
+use domain::entities::project::Project;
+use infrastructure::database::{
+    mappers::project_db_mapper::ProjectDbMapper,
+    repositories::project_diesel::ProjectDieselRepository,
+};
 use uuid::Uuid;
 
-use crate::{
-    business::repositories::organization_repository::OrganizationRepository,
-    infrastructure::database::{
-        database_connection::DbConnection,
-        repositories::organization_diesel::OrganizationDieselRepository, mappers::organization_db_mapper::OrganizationDbMapper,
-    },
-};
+use crate::infrastructure::database::database_connection::DbConnection;
 
 mod business;
 mod domain;
@@ -21,16 +20,21 @@ fn main() {
         database_name: "flagnator".to_string(),
     };
 
-    let repository = OrganizationDieselRepository {
+    let repository = ProjectDieselRepository {
         db_conn: db_connection,
-        organization_db_mapper: OrganizationDbMapper {}
+        project_db_mapper: ProjectDbMapper {},
     };
 
-    let _ = repository.add(&Organization::new(Uuid::new_v4(), "featrure-y".to_string(), "emai@email.com".to_string(), "passwqord".to_string()));
+    let _ = repository.add(&Project {
+        feature_flags: None,
+        id: Uuid::new_v4(),
+        name: "project_a".to_string(),
+        organization_id: Uuid::from_str("1f0382aa-a35c-4d6c-8e8e-ca840a713c52").unwrap(),
+    });
 
-    //let result_opt = repository.get(Uuid::from_str("1f0382aa-a35c-4d6c-8e8e-ca840a713c52").expect("error")).unwrap();
+    //let result_opt = repository.get(Uuid::from_str("7aa7861b-d842-4680-9c0d-2e9d1a756222").unwrap()).unwrap();
 
-    //let result = repository.email_exists("email@email.com").unwrap();
+    // let result = repository.name_exists("project_b", Uuid::from_str("0f0382aa-a35c-4d6c-8e8e-ca840a713c52").unwrap()).unwrap();
 
-    //println!("{}", result);
+    // println!("{:?}", result);
 }

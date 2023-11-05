@@ -19,7 +19,4 @@ diesel::table! {
 
 diesel::joinable!(projects -> organizations (organization_id));
 
-diesel::allow_tables_to_appear_in_same_query!(
-    organizations,
-    projects,
-);
+diesel::allow_tables_to_appear_in_same_query!(organizations, projects,);

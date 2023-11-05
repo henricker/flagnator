@@ -123,7 +123,7 @@ mod tests {
                     project_uuid,
                     other_organization_uuid,
                     "feature-x".to_string(),
-                    Vec::new(),
+                    None,
                 )))
             });
 
@@ -162,7 +162,7 @@ mod tests {
                     project_uuid,
                     organization_uuid,
                     "feature-x".to_string(),
-                    Vec::new(),
+                    None,
                 )))
             });
 
@@ -206,7 +206,7 @@ mod tests {
                     project_uuid,
                     organization_uuid,
                     "feature-x".to_string(),
-                    Vec::new(),
+                    None,
                 )))
             });
 

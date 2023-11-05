@@ -24,7 +24,7 @@ impl<'a> CreateProjectUseCase<'a> {
         }
 
         let id = Uuid::new_v4();
-        let project = Project::new(id, organization_id, name, Vec::new());
+        let project = Project::new(id, organization_id, name, None);
 
         self.repository.add(&project)?;
 

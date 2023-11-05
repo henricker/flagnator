@@ -7,7 +7,7 @@ pub struct Project {
     pub id: Uuid,
     pub organization_id: Uuid,
     pub name: String,
-    pub feature_flags: Vec<FeatureFlag>,
+    pub feature_flags: Option<Vec<FeatureFlag>>,
 }
 
 impl Project {
@@ -16,7 +16,7 @@ impl Project {
         id: Uuid,
         organization_id: Uuid,
         name: String,
-        feature_flags: Vec<FeatureFlag>,
+        feature_flags: Option<Vec<FeatureFlag>>,
     ) -> Project {
         Project {
             id,

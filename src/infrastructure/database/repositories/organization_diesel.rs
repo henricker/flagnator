@@ -16,7 +16,7 @@ use crate::{
 };
 pub struct OrganizationDieselRepository {
     pub db_conn: DbConnection,
-    pub organization_db_mapper: OrganizationDbMapper
+    pub organization_db_mapper: OrganizationDbMapper,
 }
 
 impl OrganizationRepository for OrganizationDieselRepository {
@@ -26,7 +26,7 @@ impl OrganizationRepository for OrganizationDieselRepository {
         let new_organization = self.organization_db_mapper.to_db(organization);
 
         diesel::insert_into(organizations::table)
-            .values(&new_organization)
+            .values(new_organization)
             .returning(OrganizationDiesel::as_returning())
             .get_result(conn)
             .expect("Error saving new post");
@@ -51,7 +51,9 @@ impl OrganizationRepository for OrganizationDieselRepository {
 
         let organization = match organization_opt {
             None => return Ok(None),
-            Some(organization_schema) => self.organization_db_mapper.to_entity(&organization_schema)
+            Some(organization_schema) => {
+                self.organization_db_mapper.to_entity(&organization_schema)
+            }
         };
 
         Ok(Some(organization))
@@ -60,7 +62,6 @@ impl OrganizationRepository for OrganizationDieselRepository {
     fn email_exists(&self, email_to_check: &str) -> Result<bool, Box<dyn Error>> {
         let conn = &mut self.db_conn.get_database_connection();
 
-        // Perform a query to check if any organization with the given email exists
         let exists = diesel::select(diesel::dsl::exists(
             organizations::dsl::organizations.filter(email.eq(email_to_check)),
         ))
