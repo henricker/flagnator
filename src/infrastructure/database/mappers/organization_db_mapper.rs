@@ -17,11 +17,11 @@ impl DbMapper<Organization, OrganizationDiesel> for OrganizationDbMapper {
     }
 
     fn to_entity(&self, model: &OrganizationDiesel) -> Organization {
-        Organization {
-            email: model.email.clone(),
-            id: Uuid::parse_str(&model.id.to_string()).expect("Failed to load uuid"),
-            name: model.name.clone(),
-            password: model.password.clone(),
-        }
+        Organization::new(
+            Uuid::parse_str(&model.id.to_string()).expect("Failed to load uuid"),
+            model.name.clone(),
+            model.email.clone(),
+            model.password.clone(),
+        )
     }
 }

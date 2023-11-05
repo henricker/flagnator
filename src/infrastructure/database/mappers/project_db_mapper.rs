@@ -15,12 +15,11 @@ impl DbMapper<Project, ProjectDiesel> for ProjectDbMapper {
     }
 
     fn to_entity(&self, model: &ProjectDiesel) -> Project {
-        Project {
-            id: Uuid::parse_str(&model.id.to_string()).expect("Failed to load uuid"),
-            name: model.name.clone(),
-            organization_id: Uuid::parse_str(&model.organization_id.to_string())
-                .expect("Failed to load uuid"),
-            feature_flags: None,
-        }
+        Project::new(
+            Uuid::parse_str(&model.id.to_string()).expect("Failed to load uuid"),
+            Uuid::parse_str(&model.organization_id.to_string()).expect("Failed to load uuid"),
+            model.name.clone(),
+            None,
+        )
     }
 }
