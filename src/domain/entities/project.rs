@@ -11,7 +11,6 @@ pub struct Project {
 }
 
 impl Project {
-    // Constructor and other methods for the Project entity
     pub fn new(
         id: Uuid,
         organization_id: Uuid,

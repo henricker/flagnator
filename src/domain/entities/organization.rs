@@ -9,7 +9,6 @@ pub struct Organization {
 }
 
 impl Organization {
-    // Constructor and other methods for the Organization entity
     pub fn new(id: Uuid, name: String, email: String, password: String) -> Organization {
         Organization {
             id,
