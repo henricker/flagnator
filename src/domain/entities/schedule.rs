@@ -10,7 +10,6 @@ pub struct Schedule {
 }
 
 impl Schedule {
-    // Constructor and other methods for the Project entity
     pub fn new(
         id: Uuid,
         feature_flag_id: Uuid,

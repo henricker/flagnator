@@ -12,7 +12,6 @@ pub struct FeatureFlag {
 }
 
 impl FeatureFlag {
-    // Constructor and other methods for the FeatureFlag entity
     pub fn new(
         id: Uuid,
         project_id: Uuid,
