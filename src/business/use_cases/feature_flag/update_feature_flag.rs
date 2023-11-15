@@ -4,7 +4,7 @@ use uuid::Uuid;
 
 use crate::{
     business::repositories::feature_flag_repository::{FeatureFlagRepository, UpdateFeatureFlag},
-    domain::entities::feature_flag::{self, FeatureFlag},
+    domain::entities::feature_flag::FeatureFlag,
 };
 
 use super::errors::UpdateFeatureFlagError;
@@ -52,11 +52,8 @@ impl<'a> UpdateFeatureFlagUseCase<'a> {
 #[cfg(test)]
 mod tests {
     use crate::{
-        business::repositories::feature_flag_repository::MockFeatureFlagRepository,
-        domain::entities::project::Project,
+        business::repositories::feature_flag_repository::MockFeatureFlagRepository
     };
-    use mockall::predicate::eq;
-
     use super::*;
 
     #[test]
